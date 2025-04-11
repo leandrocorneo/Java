@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CalculatorGUI",
+      "request": "launch",
+      "mainClass": "ui.CalculatorGUI",
+      "projectName": "Trabalho-Matheus_e99c7dd5"
+    },
+    {
+      "type": "java",
+      "name": "Executar GUI",
+      "request": "launch",
+      "mainClass": "ui.CalculatorGUI",
+      "projectName": "Trabalho-Matheus"
+    }
+  ]
+}

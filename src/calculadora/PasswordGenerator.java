@@ -1,5 +1,8 @@
 package calculadora;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class PasswordGenerator {
@@ -17,25 +20,39 @@ public class PasswordGenerator {
     }
 
     public String gerar(int tamanho) {
-        StringBuilder caracteres = new StringBuilder();
+        List<String> tiposAtivos = new ArrayList<>();
+        List<Character> senha = new ArrayList<>();
 
-        if (usarMaiusculas) caracteres.append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        if (usarMinusculas) caracteres.append("abcdefghijklmnopqrstuvwxyz");
-        if (usarNumeros) caracteres.append("0123456789");
-        if (usarSimbolos) caracteres.append("!@#$%&*()-_=+[]{};:,.<>?/");
+        if (usarMaiusculas) tiposAtivos.add("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        if (usarMinusculas) tiposAtivos.add("abcdefghijklmnopqrstuvwxyz");
+        if (usarNumeros) tiposAtivos.add("0123456789");
+        if (usarSimbolos) tiposAtivos.add("!@#$%&*()-_=+[]{};:,.<>?/");
 
-        if (caracteres.length() == 0) {
+        if (tiposAtivos.isEmpty()) {
             throw new IllegalArgumentException("É necessário selecionar ao menos um tipo de caractere.");
         }
+        if (tamanho < tiposAtivos.size()) {
+            throw new IllegalArgumentException("Tamanho não pode ser menor que a quantidade de tipos.");
+        } 
 
         Random random = new Random();
-        StringBuilder senha = new StringBuilder();
 
-        for (int i = 0; i < tamanho; i++) {
-            int index = random.nextInt(caracteres.length());
-            senha.append(caracteres.charAt(index));
+        for (String tipo : tiposAtivos) {
+            senha.add(tipo.charAt(random.nextInt(tipo.length())));
         }
 
-        return senha.toString();
+        String todosOsCaracteres = String.join("", tiposAtivos);
+        while (senha.size() < tamanho) {
+            senha.add(todosOsCaracteres.charAt(random.nextInt(todosOsCaracteres.length())));
+        }
+
+        Collections.shuffle(senha);
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : senha) {
+            sb.append(c);
+        }
+
+        return sb.toString();
     }
 }

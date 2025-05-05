@@ -6,6 +6,13 @@
       "name": "CalculatorGUI",
       "request": "launch",
       "mainClass": "ui.CalculatorGUI",
+      "projectName": "Java_367b112e"
+    },
+    {
+      "type": "java",
+      "name": "CalculatorGUI",
+      "request": "launch",
+      "mainClass": "ui.CalculatorGUI",
       "projectName": "Trabalho-Matheus_e99c7dd5"
     },
     {

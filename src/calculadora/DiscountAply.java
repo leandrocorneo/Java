@@ -1,8 +1,7 @@
 package calculadora;
 
-public class DiscountAply extends Calcule{
-    @Override
+public class DiscountAply extends Calcule {
     public double calcular(double a, double b) {
-        return a - (a * b / 100);
+        return CalculeUtil.discountAply(a, b);
     }
 }

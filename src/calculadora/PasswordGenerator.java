@@ -11,6 +11,7 @@ public class PasswordGenerator {
     private boolean usarMinusculas;
     private boolean usarNumeros;
     private boolean usarSimbolos;
+    private static final int TAMANHO_MAXIMO = 30;
 
     public PasswordGenerator(boolean usarMaiusculas, boolean usarMinusculas, boolean usarNumeros, boolean usarSimbolos) {
         this.usarMaiusculas = usarMaiusculas;
@@ -34,7 +35,10 @@ public class PasswordGenerator {
         if (tamanho < tiposAtivos.size()) {
             throw new IllegalArgumentException("Tamanho não pode ser menor que a quantidade de tipos.");
         } 
-
+        if (tamanho > TAMANHO_MAXIMO) {
+            throw new IllegalArgumentException("Tamanho muito grande. Escolha no máximo " + TAMANHO_MAXIMO + " caracteres.");
+        }
+        
         Random random = new Random();
 
         for (String tipo : tiposAtivos) {

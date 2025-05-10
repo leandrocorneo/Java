@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CalculeUtilTest",
+      "request": "launch",
+      "mainClass": "calculadora.CalculeUtilTest",
+      "projectName": "Trabalho-Matheus_e99c7dd5"
+    },
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "Trabalho-Matheus_e99c7dd5"
+    },
+    {
+      "type": "java",
       "name": "CalculatorGUI",
       "request": "launch",
       "mainClass": "ui.CalculatorGUI",

@@ -1,8 +1,7 @@
 package calculadora;
 
-public class IncrementValue extends Calcule{
-    @Override
+public class IncrementValue extends Calcule {
     public double calcular(double a, double b) {
-        return a + (a * b / 100);
+        return CalculeUtil.incrementValue(a, b);
     }
 }

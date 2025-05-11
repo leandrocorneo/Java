@@ -1,6 +1,6 @@
 package calculadora;
 
-public class CalculeUtil {
+public final class CalculeUtil {
 
     private static final double LIMITE_MAXIMO = 1e6;
 

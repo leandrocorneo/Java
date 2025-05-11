@@ -3,13 +3,17 @@ package ui;
 import calculadora.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.util.HashMap;
+import java.awt.event.*;
 
 public class CalculatorGUI extends JFrame {
     private JComboBox<String> operacoesCombo;
     private JPanel camposPainel;
     private JButton calcularBtn;
     private JLabel resultadoLabel;
+    private JButton copiarResultadoButton;
 
     private JCheckBox maiusculasBox, minusculasBox, numerosBox, simbolosBox;
     private HashMap<String, JTextField> campos = new HashMap<>();
@@ -41,6 +45,20 @@ public class CalculatorGUI extends JFrame {
 
         resultadoLabel = new JLabel("Resultado: ");
 
+        copiarResultadoButton = new JButton("Copiar");
+        copiarResultadoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String texto = resultadoLabel.getText();
+                int index = texto.indexOf(" ");
+                String resultado = (index != -1) ? texto.substring(index + 1) : texto;
+
+                StringSelection stringSelection = new StringSelection(resultado);
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(stringSelection, null);
+            }
+        });
+
         JPanel topo = new JPanel(new FlowLayout());
         topo.add(new JLabel("Operação:"));
         topo.add(operacoesCombo);
@@ -51,6 +69,7 @@ public class CalculatorGUI extends JFrame {
         JPanel rodape = new JPanel(new FlowLayout());
         rodape.add(calcularBtn);
         rodape.add(resultadoLabel);
+        rodape.add(copiarResultadoButton);
 
         add(topo, BorderLayout.NORTH);
         add(camposPainel, BorderLayout.CENTER);
